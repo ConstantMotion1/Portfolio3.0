@@ -12,6 +12,9 @@ const scene = new THREE.Scene();
 const light = new THREE.PointLight(0xffffff, 1, 1000);
 light.position.set(0, 0, 0);
 
+const ambientLight = new THREE.AmbientLight(0x333333);
+scene.add(ambientLight);
+
 //Setup Viewport
 const size = {
   width : window.innerWidth,
