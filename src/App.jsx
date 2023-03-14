@@ -88,44 +88,62 @@ scene.add(earthObj);
 const marsGeometry = new THREE.SphereGeometry(2, 64, 64);
 const marsMaterial = new THREE.MeshStandardMaterial({color: '#D54116'});
 const marsMesh = new THREE.Mesh(marsGeometry, marsMaterial);
-marsMesh.position.set(30, 0, 40)
-scene.add(marsMesh);
+marsMesh.position.set(30, 0, 40);
+const marsObj = new THREE.Object3D();
+marsObj.add(marsMesh)
+scene.add(marsObj);
 
 const jupiterGeometry = new THREE.SphereGeometry(5, 64, 64);
 const jupiterMaterial = new THREE.MeshStandardMaterial({color: '#D59816'});
 const jupiterMesh = new THREE.Mesh(jupiterGeometry, jupiterMaterial);
-jupiterMesh.position.set(45, 0, 50)
-scene.add(jupiterMesh);
+jupiterMesh.position.set(45, 0, 50);
+const jupiterObj = new THREE.Object3D();
+jupiterObj.add(jupiterMesh)
+scene.add(jupiterObj);
 
 const saturnGeometry = new THREE.SphereGeometry(4, 64, 64);
 const saturnMaterial = new THREE.MeshStandardMaterial({color: '#C27E0E'});
 const saturnMesh = new THREE.Mesh(saturnGeometry, saturnMaterial);
-saturnMesh.position.set(60, 0, 60)
-scene.add(saturnMesh);
+saturnMesh.position.set(60, 0, 60);
+const saturnObj = new THREE.Object3D();
+saturnObj.add(saturnMesh)
+scene.add(saturnObj);
 
 const uranusGeometry = new THREE.SphereGeometry(3, 64, 64);
 const uranusMaterial = new THREE.MeshStandardMaterial({color: '#0E24C2'});
 const uranusMesh = new THREE.Mesh(uranusGeometry, uranusMaterial);
-uranusMesh.position.set(67, 0, 65)
-scene.add(uranusMesh);
+uranusMesh.position.set(67, 0, 65);
+const uranusObj = new THREE.Object3D();
+uranusObj.add(uranusMesh)
+scene.add(uranusObj);
 
 const neptuneGeometry = new THREE.SphereGeometry(2, 64, 64);
 const neptuneMaterial = new THREE.MeshStandardMaterial({color: '#30BCD3'});
 const neptuneMesh = new THREE.Mesh(neptuneGeometry, neptuneMaterial);
-neptuneMesh.position.set(75, 0, 70)
-scene.add(neptuneMesh);
+neptuneMesh.position.set(75, 0, 70);
+const neptuneObj = new THREE.Object3D();
+neptuneObj.add(neptuneMesh)
+scene.add(neptuneObj);
 
 const plutoGeometry = new THREE.SphereGeometry(1, 64, 64);
 const plutoMaterial = new THREE.MeshStandardMaterial({color: '#B4D8DE'});
 const plutoMesh = new THREE.Mesh(plutoGeometry, plutoMaterial);
-plutoMesh.position.set(89, 0, 80)
-scene.add(plutoMesh);
+plutoMesh.position.set(89, 0, 80);
+const plutoObj = new THREE.Object3D();
+plutoObj.add(plutoMesh)
+scene.add(plutoObj);
 
 
 function animate() {
   mercuryObj.rotateY(0.04)
   venusObj.rotateY(0.015)
-  earthObj.rotateY(0.020)
+  earthObj.rotateY(0.01)
+  marsObj.rotateY(0.008)
+  jupiterObj.rotateY(0.002)
+  saturnObj.rotateY(0.001)
+  uranusObj.rotateY(0.0008)
+  neptuneObj.rotateY(0.0007)
+  plutoObj.rotateY(0.0009)
 }
 
 renderer.setAnimationLoop(animate)
