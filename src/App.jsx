@@ -12,7 +12,7 @@ const scene = new THREE.Scene();
 const light = new THREE.PointLight(0xffffff, 1, 1000);
 light.position.set(0, 0, 0);
 
-const ambientLight = new THREE.AmbientLight(0x333333);
+const ambientLight = new THREE.AmbientLight(0x333333, 0.5);
 scene.add(ambientLight);
 
 //Setup Viewport
@@ -108,9 +108,18 @@ const saturnGeometry = new THREE.SphereGeometry(4, 64, 64);
 const saturnMaterial = new THREE.MeshStandardMaterial({color: '#C27E0E'});
 const saturnMesh = new THREE.Mesh(saturnGeometry, saturnMaterial);
 saturnMesh.position.set(60, 0, 60);
+// Create saturn's ring
+const saturnRing = new THREE.TorusGeometry(6, 1.1, 30, 200);
+const saturnRingMaterial = new THREE.MeshStandardMaterial({color:'#E1D868'});
+const saturnRingMesh = new THREE.Mesh(saturnRing, saturnRingMaterial);
+saturnRingMesh.position.set(60, 0, 60);
 const saturnObj = new THREE.Object3D();
 saturnObj.add(saturnMesh)
-scene.add(saturnObj);
+//Combine saturn sphere object with ring object
+const saturnwRing = new THREE.Group();
+saturnwRing.add(saturnObj);
+saturnwRing.add(saturnRingMesh);
+scene.add(saturnwRing);
 
 const uranusGeometry = new THREE.SphereGeometry(3, 64, 64);
 const uranusMaterial = new THREE.MeshStandardMaterial({color: '#0E24C2'});
@@ -141,12 +150,12 @@ function animate() {
   mercuryObj.rotateY(0.04)
   venusObj.rotateY(0.015)
   earthObj.rotateY(0.01)
-  marsObj.rotateY(0.008)
-  jupiterObj.rotateY(0.002)
-  saturnObj.rotateY(0.001)
-  uranusObj.rotateY(0.0008)
-  neptuneObj.rotateY(0.0007)
-  plutoObj.rotateY(0.0009)
+  marsObj.rotateY(0.009)
+  jupiterObj.rotateY(0.007)
+  saturnwRing.rotateY(0.004)
+  uranusObj.rotateY(0.002)
+  neptuneObj.rotateY(0.0012)
+  plutoObj.rotateY(0.00095)
 }
 
 renderer.setAnimationLoop(animate)
@@ -161,10 +170,11 @@ loop();
 
 
 //Timeline
-// const tl = gsap.timeline({ default: { duration: 1 }})  
-// tl.fromTo(scene.scale, {z:0, x:0, z:0}, {z:1, x:1, z:1})
-// tl.fromTo('nav', {y: '-100%'}, {y: '0%'})
-// tl.fromTo('.title', {opacity: 0}, {opacity: 1})
+const tl = gsap.timeline({ default: { duration: 5 }})  
+tl.fromTo(scene.scale, {z:0, x:0, z:0}, {z:1, x:1, z:1})
+tl.fromTo('nav', {y: '-100%'}, {y: '0%'})
+tl.fromTo('#title', {opacity: 0}, {opacity: 1})
+tl.fromTo(camera.position, {z:20, x:0, y:0}, {z:120, x:0, y:20})
 
 
 //mouse animation color
