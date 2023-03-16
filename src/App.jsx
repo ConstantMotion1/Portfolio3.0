@@ -129,6 +129,8 @@ const saturnRing = new THREE.TorusGeometry(6, 0.6, 30, 200);
 const saturnRingMaterial = new THREE.MeshStandardMaterial({map: textureLoader.load(saturnringWrap)});
 const saturnRingMesh = new THREE.Mesh(saturnRing, saturnRingMaterial);
 saturnRingMesh.position.set(60, 0, 60);
+let axis = new THREE.Vector3(1, 0, 0)
+saturnRingMesh.rotateOnAxis(axis, 20)
 const saturnObj = new THREE.Object3D();
 saturnObj.add(saturnMesh)
 //Combine saturn sphere object with ring object
@@ -188,6 +190,7 @@ function animate() {
 
 
   earthMesh.rotateY(0.003)
+  jupiterMesh.rotateY(0.003)
 }
 
 renderer.setAnimationLoop(animate)
