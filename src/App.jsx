@@ -2,6 +2,18 @@ import './App.css';
 import * as THREE from 'three';
 import gsap from 'gsap';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
+import sunWrap from './assets/textures/sun.jpg';
+import mercuryWrap from './assets/textures/mercury.jpg';
+import venusWrap from './assets/textures/venus.jpg';
+import earthWrap from './assets/textures/earth.jpg';
+import marsWrap from './assets/textures/mars.jpg';
+import jupiterWrap from './assets/textures/jupiter.jpg';
+import saturnWrap from './assets/textures/saturn.jpg';
+import saturnringWrap from './assets/textures/saturnring.png';
+import uranusWrap from './assets/textures/uranus.jpg';
+import neptuneWrap from './assets/textures/neptune.jpg';
+import plutoWrap from './assets/textures/pluto.jpg';
+
 
 
 
@@ -54,9 +66,13 @@ window.addEventListener('resize', () => {
   renderer.setSize(size.width, size.height);
 })
 
+//Create Textures
+const textureLoader = new THREE.TextureLoader()
+
+
 //Create Sun 
 const sunGeometry = new THREE.SphereGeometry(7, 64, 64);
-const sunMaterial = new THREE.MeshBasicMaterial({ color: '#E7E427'});
+const sunMaterial = new THREE.MeshBasicMaterial({map: textureLoader.load(sunWrap)});
 const sunMesh = new THREE.Mesh(sunGeometry, sunMaterial);
 
 //Make Sun the light emitter
@@ -65,7 +81,7 @@ scene.add(sunMesh)
 
 // Create Planets
 const mercuryGeometry = new THREE.SphereGeometry(1, 64, 64);
-const mercuryMaterial = new THREE.MeshStandardMaterial({color: '#ffb533'});
+const mercuryMaterial = new THREE.MeshStandardMaterial({map: textureLoader.load(mercuryWrap)});
 const mercuryMesh = new THREE.Mesh(mercuryGeometry, mercuryMaterial);
 mercuryMesh.position.set(13, 0, 10)
 const mercuryObj = new THREE.Object3D();
@@ -73,7 +89,7 @@ mercuryObj.add(mercuryMesh)
 scene.add(mercuryObj);
 
 const venusGeometry = new THREE.SphereGeometry(2, 64, 64);
-const venusMaterial = new THREE.MeshStandardMaterial({color: '#9C8934'});
+const venusMaterial = new THREE.MeshStandardMaterial({map: textureLoader.load(venusWrap)});
 const venusMesh = new THREE.Mesh(venusGeometry, venusMaterial);
 venusMesh.position.set(19, 0, 15)
 const venusObj = new THREE.Object3D();
@@ -81,7 +97,7 @@ venusObj.add(venusMesh)
 scene.add(venusObj);
 
 const earthGeometry = new THREE.SphereGeometry(3, 64, 64);
-const earthMaterial = new THREE.MeshStandardMaterial({color: '#4690BE'});
+const earthMaterial = new THREE.MeshStandardMaterial({map: textureLoader.load(earthWrap)});
 const earthMesh = new THREE.Mesh(earthGeometry, earthMaterial);
 earthMesh.position.set(24, 0, 30);
 const earthObj = new THREE.Object3D();
@@ -89,7 +105,7 @@ earthObj.add(earthMesh)
 scene.add(earthObj);
 
 const marsGeometry = new THREE.SphereGeometry(2, 64, 64);
-const marsMaterial = new THREE.MeshStandardMaterial({color: '#D54116'});
+const marsMaterial = new THREE.MeshStandardMaterial({map: textureLoader.load(marsWrap)});
 const marsMesh = new THREE.Mesh(marsGeometry, marsMaterial);
 marsMesh.position.set(30, 0, 40);
 const marsObj = new THREE.Object3D();
@@ -97,7 +113,7 @@ marsObj.add(marsMesh)
 scene.add(marsObj);
 
 const jupiterGeometry = new THREE.SphereGeometry(5, 64, 64);
-const jupiterMaterial = new THREE.MeshStandardMaterial({color: '#D59816'});
+const jupiterMaterial = new THREE.MeshStandardMaterial({map: textureLoader.load(jupiterWrap)});
 const jupiterMesh = new THREE.Mesh(jupiterGeometry, jupiterMaterial);
 jupiterMesh.position.set(45, 0, 50);
 const jupiterObj = new THREE.Object3D();
@@ -105,12 +121,12 @@ jupiterObj.add(jupiterMesh)
 scene.add(jupiterObj);
 
 const saturnGeometry = new THREE.SphereGeometry(4, 64, 64);
-const saturnMaterial = new THREE.MeshStandardMaterial({color: '#C27E0E'});
+const saturnMaterial = new THREE.MeshStandardMaterial({map: textureLoader.load(saturnWrap)});
 const saturnMesh = new THREE.Mesh(saturnGeometry, saturnMaterial);
 saturnMesh.position.set(60, 0, 60);
 // Create saturn's ring
-const saturnRing = new THREE.TorusGeometry(6, 1.1, 30, 200);
-const saturnRingMaterial = new THREE.MeshStandardMaterial({color:'#E1D868'});
+const saturnRing = new THREE.TorusGeometry(6, 0.6, 30, 200);
+const saturnRingMaterial = new THREE.MeshStandardMaterial({map: textureLoader.load(saturnringWrap)});
 const saturnRingMesh = new THREE.Mesh(saturnRing, saturnRingMaterial);
 saturnRingMesh.position.set(60, 0, 60);
 const saturnObj = new THREE.Object3D();
@@ -123,7 +139,7 @@ scene.add(saturnwRing);
 
 
 const uranusGeometry = new THREE.SphereGeometry(3, 64, 64);
-const uranusMaterial = new THREE.MeshStandardMaterial({color: '#0E24C2'});
+const uranusMaterial = new THREE.MeshStandardMaterial({map: textureLoader.load(uranusWrap)});
 const uranusMesh = new THREE.Mesh(uranusGeometry, uranusMaterial);
 uranusMesh.position.set(67, 0, 65);
 const uranusObj = new THREE.Object3D();
@@ -143,7 +159,7 @@ scene.add(uranuswRing);
 scene.add(uranuswRing);
 
 const neptuneGeometry = new THREE.SphereGeometry(2, 64, 64);
-const neptuneMaterial = new THREE.MeshStandardMaterial({color: '#30BCD3'});
+const neptuneMaterial = new THREE.MeshStandardMaterial({map: textureLoader.load(neptuneWrap)});
 const neptuneMesh = new THREE.Mesh(neptuneGeometry, neptuneMaterial);
 neptuneMesh.position.set(75, 0, 70);
 const neptuneObj = new THREE.Object3D();
@@ -151,7 +167,7 @@ neptuneObj.add(neptuneMesh)
 scene.add(neptuneObj);
 
 const plutoGeometry = new THREE.SphereGeometry(1, 64, 64);
-const plutoMaterial = new THREE.MeshStandardMaterial({color: '#B4D8DE'});
+const plutoMaterial = new THREE.MeshStandardMaterial({map: textureLoader.load(plutoWrap)});
 const plutoMesh = new THREE.Mesh(plutoGeometry, plutoMaterial);
 plutoMesh.position.set(89, 0, 80);
 const plutoObj = new THREE.Object3D();
@@ -169,6 +185,9 @@ function animate() {
   uranuswRing.rotateY(0.002)
   neptuneObj.rotateY(0.0012)
   plutoObj.rotateY(0.00095)
+
+
+  earthMesh.rotateY(0.003)
 }
 
 renderer.setAnimationLoop(animate)
