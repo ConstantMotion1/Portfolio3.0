@@ -121,13 +121,26 @@ saturnwRing.add(saturnObj);
 saturnwRing.add(saturnRingMesh);
 scene.add(saturnwRing);
 
+
 const uranusGeometry = new THREE.SphereGeometry(3, 64, 64);
 const uranusMaterial = new THREE.MeshStandardMaterial({color: '#0E24C2'});
 const uranusMesh = new THREE.Mesh(uranusGeometry, uranusMaterial);
 uranusMesh.position.set(67, 0, 65);
 const uranusObj = new THREE.Object3D();
+
+//Create Uranus ring
+const uranusRing = new THREE.TorusGeometry(3.5, 0.4, 30, 200);
+const uranusRingMaterial = new THREE.MeshStandardMaterial({color:'#1BAD9C'});
+const uranusRingMesh = new THREE.Mesh(uranusRing, uranusRingMaterial);
+uranusRingMesh.position.set(67, 0, 65);
 uranusObj.add(uranusMesh)
-scene.add(uranusObj);
+//Combine saturn sphere object with ring object
+const uranuswRing = new THREE.Group();
+uranuswRing.add(uranusObj);
+uranuswRing.add(uranusRingMesh);
+scene.add(uranuswRing);
+
+scene.add(uranuswRing);
 
 const neptuneGeometry = new THREE.SphereGeometry(2, 64, 64);
 const neptuneMaterial = new THREE.MeshStandardMaterial({color: '#30BCD3'});
@@ -153,7 +166,7 @@ function animate() {
   marsObj.rotateY(0.009)
   jupiterObj.rotateY(0.007)
   saturnwRing.rotateY(0.004)
-  uranusObj.rotateY(0.002)
+  uranuswRing.rotateY(0.002)
   neptuneObj.rotateY(0.0012)
   plutoObj.rotateY(0.00095)
 }
@@ -174,7 +187,7 @@ const tl = gsap.timeline({ default: { duration: 5 }})
 tl.fromTo(scene.scale, {z:0, x:0, z:0}, {z:1, x:1, z:1})
 tl.fromTo('nav', {y: '-100%'}, {y: '0%'})
 tl.fromTo('#title', {opacity: 0}, {opacity: 1})
-tl.fromTo(camera.position, {z:20, x:0, y:0}, {z:120, x:0, y:20})
+tl.fromTo(camera.position, {z:20, x:0, y:0}, {z:150, x:0, y:60})
 
 
 //mouse animation color
