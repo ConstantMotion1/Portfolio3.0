@@ -24,7 +24,7 @@ const scene = new THREE.Scene();
 const light = new THREE.PointLight(0xffffff, 1, 1000);
 light.position.set(0, 0, 0);
 
-const ambientLight = new THREE.AmbientLight(0x333333, 0.5);
+const ambientLight = new THREE.AmbientLight(0x333333, 0.2);
 scene.add(ambientLight);
 
 //Setup Viewport
@@ -225,11 +225,11 @@ loop();
 
 
 //Timeline
-const tl = gsap.timeline({ default: { duration: 5 }})  
+const tl = gsap.timeline({ default: { duration: 1 }})  
 tl.fromTo(scene.scale, {z:0, x:0, z:0}, {z:1, x:1, z:1})
 tl.fromTo('nav', {y: '-100%'}, {y: '0%'})
-tl.fromTo('#title', {opacity: 0}, {opacity: 1})
 tl.fromTo(camera.position, {z:20, x:0, y:0}, {z:150, x:0, y:60})
+tl.fromTo('h1', {opacity: '0%'}, {opacity: '100%'})
 
 
 //mouse animation color
