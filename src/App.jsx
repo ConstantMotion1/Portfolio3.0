@@ -38,7 +38,7 @@ const camera = new THREE.PerspectiveCamera(45, size.width/size.height, 0.1, 2000
 camera.position.z = 20
 scene.add(camera)
 
-//Render Objects
+//Connect Canvas
 const canvas = document.getElementById('root')
 const renderer = new THREE.WebGLRenderer({ canvas });
 renderer.setSize(size.width, size.height)
@@ -125,7 +125,7 @@ const saturnMaterial = new THREE.MeshStandardMaterial({map: textureLoader.load(s
 const saturnMesh = new THREE.Mesh(saturnGeometry, saturnMaterial);
 saturnMesh.position.set(60, 0, 60);
 // Create saturn's ring
-const saturnRing = new THREE.TorusGeometry(6, 0.6, 30, 200);
+const saturnRing = new THREE.TorusGeometry(7, 0.6, 30, 200);
 const saturnRingMaterial = new THREE.MeshStandardMaterial({map: textureLoader.load(saturnringWrap)});
 const saturnRingMesh = new THREE.Mesh(saturnRing, saturnRingMaterial);
 saturnRingMesh.position.set(60, 0, 60);
@@ -176,6 +176,25 @@ const plutoObj = new THREE.Object3D();
 plutoObj.add(plutoMesh)
 scene.add(plutoObj);
 
+//Create Stars
+const starGeometry = new THREE.BufferGeometry();
+const starMaterial = new THREE.PointsMaterial({color: '#ffffff', size: 0.2});
+const starCount = 15000;
+const vertices = new Float32Array(starCount)
+
+//Give each vertices a random position
+for (let i = 0; i < starCount; i++) {
+  vertices[i] = (Math.random() - 0.5) * 1000
+}
+const buffer = new THREE.BufferAttribute(vertices, 3)
+
+starGeometry.setAttribute("position", buffer )
+
+const star = new THREE.Points(starGeometry, starMaterial);
+const stars = new THREE.Object3D();
+stars.add(star)
+scene.add(stars);
+
 
 function animate() {
   mercuryObj.rotateY(0.04)
@@ -191,6 +210,7 @@ function animate() {
 
   earthMesh.rotateY(0.003)
   jupiterMesh.rotateY(0.003)
+  sunMesh.rotateY(0.004)
 }
 
 renderer.setAnimationLoop(animate)
