@@ -6,7 +6,8 @@
   "homepage": "http://ConstantMotion1.github.io/SolarSystem",
   "scripts": {
     "dev": "vite",
-    "build": "react-scripts build",
+    "build": "vite build",
+    "preview": "vite preview",
     "predeploy" : "npm run build",
     "deploy" : "gh-pages -d build"
   },
