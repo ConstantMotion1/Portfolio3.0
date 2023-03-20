@@ -2,6 +2,7 @@ import './App.css';
 import * as THREE from 'three';
 import gsap from 'gsap';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 import sunWrap from './assets/textures/sun.jpg';
 import mercuryWrap from './assets/textures/mercury.jpg';
 import venusWrap from './assets/textures/venus.jpg';
@@ -13,9 +14,6 @@ import saturnringWrap from './assets/textures/saturnring.png';
 import uranusWrap from './assets/textures/uranus.jpg';
 import neptuneWrap from './assets/textures/neptune.jpg';
 import plutoWrap from './assets/textures/pluto.jpg';
-
-
-
 
 //Setting up Scene
 const scene = new THREE.Scene();
@@ -50,8 +48,6 @@ const controls = new OrbitControls(camera, canvas)
 controls.enableDamping = true;
 controls.enablePan = false;
 controls.enableZoom = true;
-// controls.autoRotate = true;
-// controls.autoRotateSpeed = 5;
 
 
 //Dynamic Resize
@@ -67,8 +63,7 @@ window.addEventListener('resize', () => {
 })
 
 //Create Textures
-const textureLoader = new THREE.TextureLoader()
-
+const textureLoader = new THREE.TextureLoader();
 
 //Create Sun 
 const sunGeometry = new THREE.SphereGeometry(7, 64, 64);
@@ -226,25 +221,11 @@ loop();
 
 //Timeline
 const tl = gsap.timeline({ default: { duration: 1 }})  
-tl.fromTo(scene.scale, {z:0, x:0, z:0}, {z:1, x:1, z:1})
+tl.fromTo(scene.scale, {x:0, z:0}, {x:1, z:1})
 tl.fromTo('nav', {y: '-100%'}, {y: '0%'})
 tl.fromTo(camera.position, {z:20, x:0, y:0}, {z:150, x:0, y:60})
 tl.fromTo('h1', {opacity: '0%'}, {opacity: '100%'})
 
-
-//mouse animation color
-// let mouseDown = false
-// let rbg = []
-// window.addEventListener('mousedown', () => (mouseDown = true))
-// window.addEventListener('mouseup', () => (mouseDown = true))
-
-// window.addEventListener('mousemove', (e) => {
-//   if(mouseDown) {
-//     rgb = [
-//       math.round()
-//     ]
-//   }
-// })
 
 function App() {
   return (
