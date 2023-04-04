@@ -2,7 +2,6 @@ import './App.css';
 import * as THREE from 'three';
 import gsap from 'gsap';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
-import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 import sunWrap from './assets/textures/sun.jpg';
 import mercuryWrap from './assets/textures/mercury.jpg';
 import venusWrap from './assets/textures/venus.jpg';
