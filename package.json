@@ -1,12 +1,12 @@
 {
-  "name": "testport",
+  "name": "solarsystemthree",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "start": "vite preview"
+    "start": "vite build"
   },
   "dependencies": {
     "gsap": "^3.11.4",
