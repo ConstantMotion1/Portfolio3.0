@@ -5,8 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "start": "vite build",
-    "build": "vite preview"
+    "build": "vite build",
+    "start": "vite preview"
   },
   "dependencies": {
     "gsap": "^3.11.4",
